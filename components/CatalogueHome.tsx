@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import AddToRequestButton from "@/components/AddToRequestButton";
 import Link from "next/link";
 import type { Category, Product, Vendor } from "@/lib/catalog";
 
@@ -33,7 +34,6 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
   const [selectedBrand, setSelectedBrand] = useState<string>("all");
   const [selectedPlatform, setSelectedPlatform] = useState<string>("all");
   const [selectedPriceRange, setSelectedPriceRange] = useState<PriceRange>("all");
-  const [addedProducts, setAddedProducts] = useState<Set<string>>(new Set());
 
   const visibleProducts = useMemo(() => {
     return products.filter((product) => {
@@ -48,9 +48,6 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
   const categoryMap = new Map(categories.map((category) => [category.id, category.label]));
   const vendorMap = new Map(vendors.map((vendor) => [vendor.id, vendor.label]));
 
-  function addToRequest(productId: string) {
-    setAddedProducts((previous) => new Set(previous).add(productId));
-  }
 
   return (
     <div className="space-y-8">
@@ -143,7 +140,6 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {visibleProducts.map((product) => {
               const keySpecs = Object.entries(product.specs).slice(0, 3);
-              const isAdded = addedProducts.has(product.id);
               return (
                 <article key={product.id} className="flex h-full flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
                   <div className="mb-3 aspect-video rounded-lg bg-gray-100 p-3 text-sm text-gray-500">{product.image}</div>
@@ -168,13 +164,7 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
                     <Link href={`/products/${product.id}`} className="rounded-md border border-gray-300 px-3 py-2 text-sm font-medium text-gray-800 hover:border-yorkRed hover:text-yorkRed">
                       View details
                     </Link>
-                    <button
-                      type="button"
-                      onClick={() => addToRequest(product.id)}
-                      className={`rounded-md px-3 py-2 text-sm font-medium text-white ${isAdded ? "bg-green-700" : "bg-yorkRed hover:opacity-90"}`}
-                    >
-                      {isAdded ? "Added" : "Add to request"}
-                    </button>
+                    <AddToRequestButton productId={product.id} />
                   </div>
                 </article>
               );

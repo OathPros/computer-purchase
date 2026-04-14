@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AddToRequestButton from "@/components/AddToRequestButton";
 import type { Product } from "@/lib/catalog";
 
 type ProductCardProps = {
@@ -16,9 +17,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <Link href={`/products/${product.id}`} className="rounded-md border px-3 py-2 text-sm font-medium hover:border-yorkRed hover:text-yorkRed">
           View details
         </Link>
-        <button type="button" className="rounded-md bg-yorkRed px-3 py-2 text-sm font-medium text-white hover:opacity-90">
-          Add to request
-        </button>
+        <AddToRequestButton productId={product.id} />
       </div>
     </article>
   );

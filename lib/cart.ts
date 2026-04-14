@@ -3,6 +3,7 @@ import type { Product } from "@/lib/catalog";
 export type CartItem = {
   productId: string;
   quantity: number;
+  selectedUpgrades: string[];
 };
 
 export type RequesterDetails = {
@@ -18,5 +19,5 @@ export type PurchaseRequest = {
 };
 
 export function createCartItem(productId: string, quantity = 1): CartItem {
-  return { productId, quantity };
+  return { productId, quantity, selectedUpgrades: [] };
 }
