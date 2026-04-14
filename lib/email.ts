@@ -2,6 +2,15 @@ import type { PurchaseRequest } from "@/lib/cart";
 
 const REQUEST_DESTINATION = "lukegag2@yorku.ca";
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 export function createRequestEmailPayload(request: PurchaseRequest) {
   const items = request.items.map((item) => {
     const unitPrice = Number(item.product.price.toFixed(2));
@@ -63,20 +72,20 @@ export function createRequestEmailPayload(request: PurchaseRequest) {
     <h1>Computer Purchase Request</h1>
     <h2>Requester Information</h2>
     <ul>
-      <li><strong>Name:</strong> ${requester.fullName}</li>
-      <li><strong>Department/Faculty:</strong> ${requester.department}</li>
-      <li><strong>Approver:</strong> ${requester.approverName}</li>
+      <li><strong>Name:</strong> ${escapeHtml(requester.fullName)}</li>
+      <li><strong>Department/Faculty:</strong> ${escapeHtml(requester.department)}</li>
+      <li><strong>Approver:</strong> ${escapeHtml(requester.approverName)}</li>
     </ul>
     <h2>Contact Details</h2>
     <ul>
-      <li><strong>Email:</strong> ${requester.email}</li>
-      <li><strong>Phone:</strong> ${requester.phoneNumber}</li>
-      <li><strong>Delivery Location:</strong> ${requester.deliveryLocation}</li>
+      <li><strong>Email:</strong> ${escapeHtml(requester.email)}</li>
+      <li><strong>Phone:</strong> ${escapeHtml(requester.phoneNumber)}</li>
+      <li><strong>Delivery Location:</strong> ${escapeHtml(requester.deliveryLocation)}</li>
     </ul>
     <h2>Request Details</h2>
     <ul>
-      <li><strong>Budget Cost Centre:</strong> ${requester.budgetCostCentre}</li>
-      <li><strong>Urgency:</strong> ${requester.urgency}</li>
+      <li><strong>Budget Cost Centre:</strong> ${escapeHtml(requester.budgetCostCentre)}</li>
+      <li><strong>Urgency:</strong> ${escapeHtml(requester.urgency)}</li>
     </ul>
     <h2>Cart Items</h2>
     <table border="1" cellpadding="8" cellspacing="0">
@@ -94,8 +103,8 @@ export function createRequestEmailPayload(request: PurchaseRequest) {
           .map(
             (item) => `
               <tr>
-                <td>${item.name}</td>
-                <td>${item.productOptions.length ? item.productOptions.join(", ") : "None"}</td>
+                <td>${escapeHtml(item.name)}</td>
+                <td>${escapeHtml(item.productOptions.length ? item.productOptions.join(", ") : "None")}</td>
                 <td>${item.quantity}</td>
                 <td>$${item.unitPrice.toFixed(2)}</td>
                 <td>$${item.lineTotal.toFixed(2)}</td>
@@ -107,9 +116,9 @@ export function createRequestEmailPayload(request: PurchaseRequest) {
     </table>
     <p><strong>Estimated Total:</strong> $${estimatedTotal.toFixed(2)}</p>
     <h2>Business Justification</h2>
-    <p>${requester.businessJustification}</p>
+    <p>${escapeHtml(requester.businessJustification)}</p>
     <h2>Additional Notes</h2>
-    <p>${additionalNotes}</p>
+    <p>${escapeHtml(additionalNotes)}</p>
   `.trim();
 
   return {
