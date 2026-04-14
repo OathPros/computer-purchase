@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AddToRequestButton from "@/components/AddToRequestButton";
 import { getCategoryLabel, getProductById, getVendorLabel } from "@/lib/catalog";
 
 type ProductPageProps = {
@@ -21,7 +22,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             Back to catalogue
           </Link>
           <Link href="/cart" className="rounded-md bg-yorkRed px-4 py-2 text-sm font-medium text-white hover:opacity-90">
-            Open request form
+            Open request cart
           </Link>
         </div>
       </article>
@@ -43,9 +44,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
             <p className="sm:col-span-2 text-lg font-semibold text-gray-900">${product.price.toLocaleString("en-CA")}</p>
           </div>
           <p className="mt-4 text-sm text-gray-700">{product.summary}</p>
-          <button type="button" className="mt-6 rounded-md bg-yorkRed px-4 py-2 text-sm font-medium text-white hover:opacity-90">
-            Add to request
-          </button>
+          <AddToRequestButton productId={product.id} className="mt-6 rounded-md bg-yorkRed px-4 py-2 text-sm font-medium text-white hover:opacity-90" />
         </div>
       </section>
 

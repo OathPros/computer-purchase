@@ -13,7 +13,8 @@ export function createRequestEmailPayload(request: PurchaseRequest) {
         name: item.product.name,
         quantity: item.quantity,
         unitPrice: item.product.price,
-        lineTotal: Number((item.quantity * item.product.price).toFixed(2))
+        lineTotal: Number((item.quantity * item.product.price).toFixed(2)),
+        selectedUpgrades: item.selectedUpgrades
       }))
     }
   };
