@@ -18,12 +18,49 @@ export type Product = {
   availabilityNotes: string;
   optionalUpgrades: string[];
   platform: "Windows" | "macOS" | "Cross-platform";
+  status: "active" | "retired";
+};
+
+// Input shape used for JSON editing. Non-critical fields are optional and normalized below.
+type ProductInput = {
+  id: string;
+  name: string;
+  categoryId: string;
+  vendorId: string;
+  price: number;
+  image: string;
+  summary: string;
+  specs: Record<string, string>;
+  platform: "Windows" | "macOS" | "Cross-platform";
+  status?: "active" | "retired";
+  fullDescription?: string;
+  recommendedUseCases?: string[];
+  notRecommendedFor?: string[];
+  warranty?: string;
+  availabilityNotes?: string;
+  optionalUpgrades?: string[];
 };
 
 export type Category = { id: string; label: string };
 export type Vendor = { id: string; label: string };
 
-export const products = productsData as unknown as Product[];
+function normalizeProduct(product: ProductInput): Product {
+  return {
+    ...product,
+    status: product.status ?? "active",
+    fullDescription: product.fullDescription ?? product.summary,
+    recommendedUseCases: product.recommendedUseCases ?? [],
+    notRecommendedFor: product.notRecommendedFor ?? [],
+    warranty: product.warranty ?? "Contact procurement for warranty details.",
+    availabilityNotes: product.availabilityNotes ?? "Availability varies by supplier and term.",
+    optionalUpgrades: product.optionalUpgrades ?? []
+  };
+}
+
+export const products = (productsData as unknown as ProductInput[])
+  .map(normalizeProduct)
+  .filter((product) => product.status !== "retired");
+
 export const categories = categoriesData as Category[];
 export const vendors = vendorsData as Vendor[];
 
