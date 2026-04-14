@@ -19,18 +19,30 @@ export interface Product {
   options: string[];
   warranty: string;
   availabilityNotes: string;
-}
+  optionalUpgrades: string[];
+  platform: "Windows" | "macOS" | "Cross-platform";
+  status: "active" | "retired";
+};
 
-export interface ProductCatalog {
-  catalogVersion: string;
-  currency: string;
-  products: Product[];
-}
-
-export interface ValidationResult {
-  valid: boolean;
-  errors: string[];
-}
+// Input shape used for JSON editing. Non-critical fields are optional and normalized below.
+type ProductInput = {
+  id: string;
+  name: string;
+  categoryId: string;
+  vendorId: string;
+  price: number;
+  image: string;
+  summary: string;
+  specs: Record<string, string>;
+  platform: "Windows" | "macOS" | "Cross-platform";
+  status?: "active" | "retired";
+  fullDescription?: string;
+  recommendedUseCases?: string[];
+  notRecommendedFor?: string[];
+  warranty?: string;
+  availabilityNotes?: string;
+  optionalUpgrades?: string[];
+};
 
 const REQUIRED_PRODUCT_FIELDS: Array<keyof Product> = [
   "id",
@@ -53,9 +65,25 @@ const REQUIRED_PRODUCT_FIELDS: Array<keyof Product> = [
   "availabilityNotes"
 ];
 
-function isObject(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null && !Array.isArray(value);
+function normalizeProduct(product: ProductInput): Product {
+  return {
+    ...product,
+    status: product.status ?? "active",
+    fullDescription: product.fullDescription ?? product.summary,
+    recommendedUseCases: product.recommendedUseCases ?? [],
+    notRecommendedFor: product.notRecommendedFor ?? [],
+    warranty: product.warranty ?? "Contact procurement for warranty details.",
+    availabilityNotes: product.availabilityNotes ?? "Availability varies by supplier and term.",
+    optionalUpgrades: product.optionalUpgrades ?? []
+  };
 }
+
+export const products = (productsData as unknown as ProductInput[])
+  .map(normalizeProduct)
+  .filter((product) => product.status !== "retired");
+
+export const categories = categoriesData as Category[];
+export const vendors = vendorsData as Vendor[];
 
 function isStringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every((item) => typeof item === "string");

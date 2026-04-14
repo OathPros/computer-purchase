@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yorku.example/schemas/products.schema.json",
+  "title": "Computer Purchase Catalogue Products",
+  "description": "Schema guidance for editing data/products.json.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "name",
+      "categoryId",
+      "vendorId",
+      "price",
+      "image",
+      "summary",
+      "specs",
+      "platform"
+    ],
+    "properties": {
+      "id": {
+        "type": "string",
+        "description": "Unique product identifier used in URLs. Use lowercase kebab-case.",
+        "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+      },
+      "name": {
+        "type": "string",
+        "minLength": 1
+      },
+      "categoryId": {
+        "type": "string",
+        "description": "Must match an id in data/categories.json."
+      },
+      "vendorId": {
+        "type": "string",
+        "description": "Must match an id in data/vendors.json."
+      },
+      "price": {
+        "type": "number",
+        "minimum": 0,
+        "description": "Numeric only. Example: 1299 (not '$1,299')."
+      },
+      "image": {
+        "type": "string",
+        "description": "Public URL (https://...) or local path starting with /."
+      },
+      "summary": {
+        "type": "string",
+        "minLength": 1
+      },
+      "fullDescription": {
+        "type": "string",
+        "description": "Optional; defaults to summary if omitted."
+      },
+      "specs": {
+        "type": "object",
+        "minProperties": 1,
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "Product specification table as key/value pairs."
+      },
+      "recommendedUseCases": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Optional; list of ideal usage scenarios."
+      },
+      "notRecommendedFor": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Optional; list of poor fit scenarios."
+      },
+      "warranty": {
+        "type": "string",
+        "description": "Optional; defaults to a generic message if omitted."
+      },
+      "availabilityNotes": {
+        "type": "string",
+        "description": "Optional; defaults to a generic message if omitted."
+      },
+      "optionalUpgrades": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Optional; defaults to an empty array if omitted."
+      },
+      "platform": {
+        "type": "string",
+        "enum": [
+          "Windows",
+          "macOS",
+          "Cross-platform"
+        ]
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "active",
+          "retired"
+        ],
+        "description": "Optional; retired products are hidden from the catalogue."
+      }
+    }
+  }
+}
