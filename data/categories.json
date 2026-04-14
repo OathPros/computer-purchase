@@ -1,0 +1,7 @@
+[
+  { "id": "laptops", "label": "Laptops" },
+  { "id": "desktops", "label": "Desktops" },
+  { "id": "monitors", "label": "Monitors" },
+  { "id": "peripherals", "label": "Peripherals" },
+  { "id": "accessories", "label": "Accessories" }
+]
