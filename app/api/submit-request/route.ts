@@ -51,14 +51,8 @@ export async function POST(request: Request) {
     items
   });
 
-  const estimatedTotal = payload.body.items.reduce((total, item) => total + item.lineTotal, 0);
-
   return NextResponse.json({
-    message: "Purchase request submitted successfully.",
-    summary: {
-      requester: payload.body.requester,
-      items: payload.body.items,
-      estimatedTotal: Number(estimatedTotal.toFixed(2))
-    }
+    message: "Email payload generated successfully. No email has been sent.",
+    emailPayload: payload
   });
 }
