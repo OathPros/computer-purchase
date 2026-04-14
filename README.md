@@ -62,7 +62,8 @@ Each product in `products.json` should include:
 - `name`
 - `categoryId` (must match `categories.json`)
 - `vendorId` (must match `vendors.json`)
-- `price`
+- `platform` (`Windows`, `macOS`, or `Cross-platform`)
+- `price` (displayed as budget guidance; final quote confirmed by askIT@yorku.ca)
 - `image` (currently placeholder text)
 - `summary`
 - `specs` (key/value object displayed on detail page)

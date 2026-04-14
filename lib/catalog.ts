@@ -11,6 +11,7 @@ export type Product = {
   image: string;
   summary: string;
   specs: Record<string, string>;
+  platform: "Windows" | "macOS" | "Cross-platform";
 };
 
 export type Category = { id: string; label: string };
