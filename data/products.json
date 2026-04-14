@@ -1,0 +1,77 @@
+[
+  {
+    "id": "apple-macbook-air-m3-13",
+    "name": "MacBook Air 13-inch (M3)",
+    "categoryId": "laptops",
+    "vendorId": "apple",
+    "price": 1699,
+    "image": "Product image placeholder",
+    "summary": "Lightweight laptop for general academic and administrative workflows.",
+    "specs": {
+      "Processor": "Apple M3",
+      "Memory": "16 GB",
+      "Storage": "512 GB SSD",
+      "Display": "13.6-inch Liquid Retina"
+    }
+  },
+  {
+    "id": "dell-latitude-7450",
+    "name": "Dell Latitude 7450",
+    "categoryId": "laptops",
+    "vendorId": "dell",
+    "price": 1549,
+    "image": "Product image placeholder",
+    "summary": "Business-class Windows laptop with durable design.",
+    "specs": {
+      "Processor": "Intel Core Ultra 7",
+      "Memory": "16 GB",
+      "Storage": "512 GB SSD",
+      "Display": "14-inch FHD"
+    }
+  },
+  {
+    "id": "lenovo-thinkcentre-m90t",
+    "name": "Lenovo ThinkCentre M90t",
+    "categoryId": "desktops",
+    "vendorId": "lenovo",
+    "price": 1399,
+    "image": "Product image placeholder",
+    "summary": "Tower desktop for office and shared lab workloads.",
+    "specs": {
+      "Processor": "Intel Core i7",
+      "Memory": "16 GB",
+      "Storage": "1 TB SSD",
+      "Graphics": "Integrated"
+    }
+  },
+  {
+    "id": "dell-ultrasharp-u2724d",
+    "name": "Dell UltraSharp U2724D",
+    "categoryId": "monitors",
+    "vendorId": "dell",
+    "price": 519,
+    "image": "Product image placeholder",
+    "summary": "27-inch monitor suitable for productivity and content review.",
+    "specs": {
+      "Resolution": "2560 x 1440",
+      "Panel": "IPS",
+      "Refresh Rate": "120Hz",
+      "Ports": "USB-C, HDMI, DisplayPort"
+    }
+  },
+  {
+    "id": "logitech-mx-keys-s",
+    "name": "Logitech MX Keys S",
+    "categoryId": "peripherals",
+    "vendorId": "logitech",
+    "price": 169,
+    "image": "Product image placeholder",
+    "summary": "Quiet full-size keyboard for office and hybrid setups.",
+    "specs": {
+      "Layout": "Full-size",
+      "Connection": "Bluetooth / USB receiver",
+      "Battery": "USB-C rechargeable",
+      "Compatibility": "Windows, macOS"
+    }
+  }
+]
