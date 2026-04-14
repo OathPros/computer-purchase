@@ -10,6 +10,12 @@ export type RequesterDetails = {
   fullName: string;
   email: string;
   department: string;
+  phoneNumber: string;
+  approverName: string;
+  budgetCostCentre: string;
+  deliveryLocation: string;
+  urgency: string;
+  businessJustification: string;
   notes?: string;
 };
 
