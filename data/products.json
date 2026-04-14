@@ -5,14 +5,34 @@
     "categoryId": "laptops",
     "vendorId": "apple",
     "price": 1699,
-    "image": "Product image placeholder",
+    "image": "https://images.unsplash.com/photo-1517336714739-489689fd1ca8?auto=format&fit=crop&w=1200&q=80",
     "summary": "Lightweight laptop for general academic and administrative workflows.",
+    "fullDescription": "The 13-inch MacBook Air with M3 is ideal for highly mobile faculty and staff who need strong battery life, responsive performance, and reliable day-to-day productivity for office, meetings, and light creative work.",
     "specs": {
       "Processor": "Apple M3",
       "Memory": "16 GB",
       "Storage": "512 GB SSD",
-      "Display": "13.6-inch Liquid Retina"
+      "Display": "13.6-inch Liquid Retina",
+      "Weight": "1.24 kg",
+      "Battery": "Up to 18 hours"
     },
+    "recommendedUseCases": [
+      "Faculty and staff who travel frequently between campus locations",
+      "Office productivity, web apps, collaboration, and presentations",
+      "Users who prefer a macOS-first workflow"
+    ],
+    "notRecommendedFor": [
+      "GPU-intensive 3D rendering and advanced simulation",
+      "Departmental shared workstation scenarios",
+      "Workflows requiring multiple internal drives"
+    ],
+    "warranty": "1-year limited warranty; AppleCare+ upgrade available",
+    "availabilityNotes": "Typically stocked in standard configurations; custom memory/storage options may extend lead times by 2-4 weeks.",
+    "optionalUpgrades": [
+      "24 GB unified memory",
+      "1 TB SSD storage",
+      "AppleCare+ coverage extension"
+    ],
     "platform": "macOS"
   },
   {
@@ -21,14 +41,34 @@
     "categoryId": "laptops",
     "vendorId": "dell",
     "price": 1549,
-    "image": "Product image placeholder",
+    "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=80",
     "summary": "Business-class Windows laptop with durable design.",
+    "fullDescription": "The Latitude 7450 is a dependable enterprise laptop for teams that need secure, manageable Windows systems with strong conferencing support and broad compatibility with institutional software.",
     "specs": {
       "Processor": "Intel Core Ultra 7",
       "Memory": "16 GB",
       "Storage": "512 GB SSD",
-      "Display": "14-inch FHD"
+      "Display": "14-inch FHD",
+      "Webcam": "1080p with privacy shutter",
+      "Weight": "1.36 kg"
     },
+    "recommendedUseCases": [
+      "Hybrid and in-office administrative staff",
+      "Department users on standard Windows software stacks",
+      "Daily use with docking and external monitors"
+    ],
+    "notRecommendedFor": [
+      "Specialized CAD workflows requiring workstation GPUs",
+      "Ultra-portable use cases where minimum weight is critical",
+      "Mac-only software environments"
+    ],
+    "warranty": "3-year Dell ProSupport next-business-day onsite service",
+    "availabilityNotes": "Core configurations are generally available; procurement cycles may impact delivery windows during peak semester starts.",
+    "optionalUpgrades": [
+      "32 GB memory",
+      "Intel vPro management package",
+      "Extended battery and USB-C dock bundle"
+    ],
     "platform": "Windows"
   },
   {
@@ -37,14 +77,34 @@
     "categoryId": "desktops",
     "vendorId": "lenovo",
     "price": 1399,
-    "image": "Product image placeholder",
+    "image": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80",
     "summary": "Tower desktop for office and shared lab workloads.",
+    "fullDescription": "The ThinkCentre M90t offers desktop stability and easy serviceability for fixed workspaces, shared offices, and lab administration where expandability and wired connectivity are priorities.",
     "specs": {
       "Processor": "Intel Core i7",
       "Memory": "16 GB",
       "Storage": "1 TB SSD",
-      "Graphics": "Integrated"
+      "Graphics": "Integrated",
+      "Networking": "Gigabit Ethernet + Wi-Fi",
+      "Expansion": "PCIe slots for future upgrades"
     },
+    "recommendedUseCases": [
+      "Shared staff offices and departmental labs",
+      "Multi-display desk setups with always-on power",
+      "Users needing easier hardware service and expansion"
+    ],
+    "notRecommendedFor": [
+      "Frequent travel or hot-desk mobility",
+      "Space-constrained work areas",
+      "Battery-dependent work scenarios"
+    ],
+    "warranty": "3-year Lenovo Premier Support",
+    "availabilityNotes": "Usually available through enterprise channels; monitor and peripheral lead times can vary independently.",
+    "optionalUpgrades": [
+      "32 GB memory",
+      "Discrete entry-level GPU",
+      "2 TB secondary SSD"
+    ],
     "platform": "Windows"
   },
   {
@@ -53,14 +113,34 @@
     "categoryId": "monitors",
     "vendorId": "dell",
     "price": 519,
-    "image": "Product image placeholder",
+    "image": "https://images.unsplash.com/photo-1527443224154-c4bb2369ecf4?auto=format&fit=crop&w=1200&q=80",
     "summary": "27-inch monitor suitable for productivity and content review.",
+    "fullDescription": "A high-quality 27-inch productivity monitor with sharp QHD resolution and flexible connectivity for modern laptop and desktop workstations across Windows and macOS environments.",
     "specs": {
       "Resolution": "2560 x 1440",
       "Panel": "IPS",
       "Refresh Rate": "120Hz",
-      "Ports": "USB-C, HDMI, DisplayPort"
+      "Ports": "USB-C, HDMI, DisplayPort",
+      "Color Coverage": "Wide-gamut factory calibrated",
+      "Ergonomics": "Height, tilt, swivel, pivot"
     },
+    "recommendedUseCases": [
+      "Office productivity and document-heavy workflows",
+      "Dual-monitor setups for admin and research staff",
+      "Teams needing consistent color for content review"
+    ],
+    "notRecommendedFor": [
+      "Color-critical studio work needing specialized reference displays",
+      "Ultra-high refresh competitive gaming scenarios",
+      "Portable or temporary workstation setups"
+    ],
+    "warranty": "3-year advanced exchange service",
+    "availabilityNotes": "Commonly available with short lead time; bundled conferencing accessories may ship separately.",
+    "optionalUpgrades": [
+      "Monitor arm mounting kit",
+      "USB-C docking monitor alternative",
+      "On-site calibration service"
+    ],
     "platform": "Cross-platform"
   },
   {
@@ -69,14 +149,34 @@
     "categoryId": "peripherals",
     "vendorId": "logitech",
     "price": 169,
-    "image": "Product image placeholder",
+    "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=1200&q=80",
     "summary": "Quiet full-size keyboard for office and hybrid setups.",
+    "fullDescription": "The MX Keys S is a premium full-size keyboard designed for comfort and reliability across multiple devices, making it a practical choice for users switching between desktops and laptops.",
     "specs": {
       "Layout": "Full-size",
       "Connection": "Bluetooth / USB receiver",
       "Battery": "USB-C rechargeable",
-      "Compatibility": "Windows, macOS"
+      "Compatibility": "Windows, macOS",
+      "Backlighting": "Smart adaptive backlit keys",
+      "Pairing": "Up to 3 devices"
     },
+    "recommendedUseCases": [
+      "Shared hybrid desks with multi-device pairing",
+      "Quiet office environments",
+      "Users wanting cross-platform keyboard consistency"
+    ],
+    "notRecommendedFor": [
+      "Users requiring ergonomic split-keyboard layouts",
+      "Rugged field environments",
+      "Mobile-only tablet usage without stable desk space"
+    ],
+    "warranty": "1-year limited hardware warranty",
+    "availabilityNotes": "Generally available through peripheral stock; specific keyboard layouts may require special order.",
+    "optionalUpgrades": [
+      "MX palm rest",
+      "Logi Bolt receiver",
+      "Bundle with MX Master mouse"
+    ],
     "platform": "Cross-platform"
   }
 ]
