@@ -47,7 +47,6 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
     });
   }, [products, activeCategory, selectedBrand, selectedPlatform, selectedPriceRange]);
 
-
   const comparedProducts = useMemo(() => {
     return selectedComparisonIds
       .map((id) => products.find((product) => product.id === id))
@@ -74,38 +73,46 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
     setSelectedComparisonIds((current) => current.filter((id) => id !== productId));
   }
 
+  function clearFilters() {
+    setActiveCategory("all");
+    setSelectedBrand("all");
+    setSelectedPlatform("all");
+    setSelectedPriceRange("all");
+  }
+
   const categoryMap = new Map(categories.map((category) => [category.id, category.label]));
   const vendorMap = new Map(vendors.map((vendor) => [vendor.id, vendor.label]));
-
 
   return (
     <div className="space-y-8">
       <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:p-10">
         <p className="text-xs font-semibold uppercase tracking-wider text-yorkRed">Computer Services Overview</p>
-        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">York University computer purchase catalogue</h2>
+        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-gray-900 md:text-4xl">York University device request catalogue</h2>
         <p className="mt-3 max-w-3xl text-sm text-gray-700 md:text-base">
-          Browse approved equipment, compare options, and build your request list for University purchasing support.
+          Browse approved equipment, compare options, and build your request list for institutional review.
         </p>
-        <div className="mt-6 grid gap-4 rounded-xl border border-amber-200 bg-amber-50 p-4 md:grid-cols-2">
+        <div className="mt-6 grid gap-4 rounded-xl border border-amber-300 bg-amber-50 p-4 md:grid-cols-2">
           <div>
-            <h3 className="font-semibold text-amber-900">Important notice</h3>
-            <p className="mt-1 text-sm text-amber-900">
-              Due to market volatility and global shortages, pricing may change. Submit a ticket to askIT@yorku.ca for a final quote and estimated delivery timeline.
+            <h3 className="font-semibold text-amber-950">Important notice</h3>
+            <p className="mt-1 text-sm text-amber-950">
+              Due to market volatility and global shortages, listed pricing may change. Contact askIT@yorku.ca for current pricing and delivery timing.
             </p>
           </div>
-          <div className="text-sm text-amber-900">
+          <div className="text-sm text-amber-950">
             <p><span className="font-semibold">Eligibility:</span> Current York University Faculty and Staff (University use only).</p>
-            <p className="mt-1"><span className="font-semibold">Payment:</span> Departmental Cost Centre or Professional Expense Reimbursement (PER).</p>
+            <p className="mt-1"><span className="font-semibold">Fulfillment:</span> Final routing and approval follow University procurement processes.</p>
           </div>
         </div>
       </section>
 
-      <section className="space-y-4">
+      <section className="space-y-4" aria-labelledby="filter-heading">
         <div className="flex flex-wrap gap-2" role="tablist" aria-label="Category tabs">
           <button
             type="button"
+            role="tab"
+            aria-selected={activeCategory === "all"}
             onClick={() => setActiveCategory("all")}
-            className={`rounded-full border px-4 py-2 text-sm font-medium ${activeCategory === "all" ? "border-yorkRed bg-yorkRed text-white" : "border-gray-300 bg-white text-gray-700"}`}
+            className={`rounded-full border px-4 py-2 text-sm font-medium ${activeCategory === "all" ? "border-yorkRed bg-yorkRed text-white" : "border-gray-300 bg-white text-gray-800"}`}
           >
             All items
           </button>
@@ -113,8 +120,10 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
             <button
               key={category.id}
               type="button"
+              role="tab"
+              aria-selected={activeCategory === category.id}
               onClick={() => setActiveCategory(category.id)}
-              className={`rounded-full border px-4 py-2 text-sm font-medium ${activeCategory === category.id ? "border-yorkRed bg-yorkRed text-white" : "border-gray-300 bg-white text-gray-700"}`}
+              className={`rounded-full border px-4 py-2 text-sm font-medium ${activeCategory === category.id ? "border-yorkRed bg-yorkRed text-white" : "border-gray-300 bg-white text-gray-800"}`}
             >
               {category.label}
             </button>
@@ -122,11 +131,16 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
         </div>
 
         <div className="rounded-xl border border-gray-200 bg-white p-4 md:p-6">
-          <h3 className="text-base font-semibold">Filter catalogue</h3>
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <h3 id="filter-heading" className="text-base font-semibold">Filter catalogue</h3>
+            <button type="button" onClick={clearFilters} className="text-sm font-medium text-yorkRed underline-offset-2 hover:underline">
+              Clear filters
+            </button>
+          </div>
           <div className="mt-3 grid gap-3 md:grid-cols-3">
             <label className="text-sm">
               <span className="mb-1 block font-medium">Brand</span>
-              <select value={selectedBrand} onChange={(event) => setSelectedBrand(event.target.value)} className="w-full rounded-md border border-gray-300 px-3 py-2">
+              <select value={selectedBrand} onChange={(event) => setSelectedBrand(event.target.value)} className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900">
                 <option value="all">All brands</option>
                 {vendors.map((vendor) => (
                   <option key={vendor.id} value={vendor.id}>{vendor.label}</option>
@@ -135,7 +149,7 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
             </label>
             <label className="text-sm">
               <span className="mb-1 block font-medium">Platform</span>
-              <select value={selectedPlatform} onChange={(event) => setSelectedPlatform(event.target.value)} className="w-full rounded-md border border-gray-300 px-3 py-2">
+              <select value={selectedPlatform} onChange={(event) => setSelectedPlatform(event.target.value)} className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900">
                 <option value="all">All platforms</option>
                 <option value="Windows">Windows</option>
                 <option value="macOS">macOS</option>
@@ -144,7 +158,7 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
             </label>
             <label className="text-sm">
               <span className="mb-1 block font-medium">Price range</span>
-              <select value={selectedPriceRange} onChange={(event) => setSelectedPriceRange(event.target.value as PriceRange)} className="w-full rounded-md border border-gray-300 px-3 py-2">
+              <select value={selectedPriceRange} onChange={(event) => setSelectedPriceRange(event.target.value as PriceRange)} className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900">
                 {priceRanges.map((range) => (
                   <option key={range.id} value={range.id}>{range.label}</option>
                 ))}
@@ -166,15 +180,15 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
         <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
           <h3 className="text-xl font-semibold">Browse approved products</h3>
           <div className="text-right">
-            <p className="text-sm text-gray-600">{visibleProducts.length} item{visibleProducts.length === 1 ? "" : "s"}</p>
-            <p className="text-xs text-gray-500">Compare selected: {selectedComparisonIds.length}/3</p>
+            <p className="text-sm text-gray-700">{visibleProducts.length} item{visibleProducts.length === 1 ? "" : "s"}</p>
+            <p className="text-xs text-gray-600">Compare selected: {selectedComparisonIds.length}/3</p>
           </div>
         </div>
 
         {!visibleProducts.length ? (
-          <div className="rounded-xl border border-dashed border-gray-300 bg-white p-8 text-center">
-            <p className="text-lg font-medium text-gray-900">No products match the selected filters.</p>
-            <p className="mt-2 text-sm text-gray-600">Try clearing one or more filters to see additional options.</p>
+          <div className="rounded-xl border border-dashed border-gray-400 bg-white p-8 text-center">
+            <p className="text-lg font-medium text-gray-900">No products match your filters.</p>
+            <p className="mt-2 text-sm text-gray-700">Clear one or more filters to view additional approved options.</p>
           </div>
         ) : (
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -182,17 +196,17 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
               const keySpecs = Object.entries(product.specs).slice(0, 3);
               return (
                 <article key={product.id} className="flex h-full flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-                  <div className="mb-3 aspect-video rounded-lg bg-gray-100 p-3 text-sm text-gray-500">{product.image}</div>
-                  <div className="mb-2 flex flex-wrap gap-2 text-xs font-medium text-gray-600">
+                  <div className="mb-3 flex aspect-video items-center justify-center rounded-lg bg-gray-100 p-3 text-center text-sm text-gray-600">Product image preview</div>
+                  <div className="mb-2 flex flex-wrap gap-2 text-xs font-medium text-gray-700">
                     <span className="rounded-full bg-gray-100 px-2 py-1">{vendorMap.get(product.vendorId) ?? product.vendorId}</span>
                     <span className="rounded-full bg-gray-100 px-2 py-1">{product.platform}</span>
                     <span className="rounded-full bg-gray-100 px-2 py-1">{categoryMap.get(product.categoryId) ?? product.categoryId}</span>
                   </div>
                   <h4 className="text-lg font-semibold text-gray-900">{product.name}</h4>
-                  <p className="mt-1 text-sm text-gray-600">{product.summary}</p>
+                  <p className="mt-1 text-sm text-gray-700">{product.summary}</p>
                   <p className="mt-3 text-base font-semibold text-gray-900">From ${product.price.toLocaleString("en-CA")}</p>
 
-                  <ul className="mt-3 space-y-1 text-sm text-gray-700">
+                  <ul className="mt-3 space-y-1 text-sm text-gray-800">
                     {keySpecs.map(([label, value]) => (
                       <li key={label}>
                         <span className="font-medium">{label}:</span> {value}
@@ -201,7 +215,7 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
                   </ul>
 
                   <div className="mt-4 flex flex-wrap gap-2">
-                    <Link href={`/products/${product.id}`} className="rounded-md border border-gray-300 px-3 py-2 text-sm font-medium text-gray-800 hover:border-yorkRed hover:text-yorkRed">
+                    <Link href={`/products/${product.id}`} className="rounded-md border border-gray-400 px-3 py-2 text-sm font-medium text-gray-800 hover:border-yorkRed hover:text-yorkRed">
                       View details
                     </Link>
                     <AddToRequestButton productId={product.id} />
@@ -212,7 +226,7 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
                       className={`rounded-md border px-3 py-2 text-sm font-medium ${
                         selectedComparisonIds.includes(product.id)
                           ? "border-yorkRed bg-yorkRed text-white"
-                          : "border-gray-300 text-gray-700 hover:border-yorkRed hover:text-yorkRed disabled:cursor-not-allowed disabled:opacity-50"
+                          : "border-gray-400 text-gray-800 hover:border-yorkRed hover:text-yorkRed disabled:cursor-not-allowed disabled:opacity-50"
                       }`}
                     >
                       {selectedComparisonIds.includes(product.id) ? "Selected for compare" : "Compare"}
@@ -225,14 +239,14 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
         )}
 
         {isCompareLimitReached ? (
-          <p className="mt-3 text-sm text-amber-700">
-            You can compare up to 3 products at a time. Remove one from comparison to add another.
+          <p className="mt-3 text-sm text-amber-800" role="status">
+            Comparison limit reached: remove one selected product to compare another.
           </p>
         ) : null}
       </section>
 
       <section className="rounded-xl border border-gray-200 bg-white p-6">
-        <h3 className="text-xl font-semibold">Buying advice</h3>
+        <h3 className="text-xl font-semibold">Selection guidance</h3>
         <p className="mt-2 text-sm text-gray-700">For most users, a practical standard setup is recommended. Choose premium only if portability, durability, and frequent travel are priorities.</p>
         <div className="mt-4 grid gap-4 md:grid-cols-3">
           <article className="rounded-lg bg-gray-50 p-4">

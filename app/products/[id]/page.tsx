@@ -21,8 +21,8 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           <Link href="/" className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-800 hover:border-yorkRed hover:text-yorkRed">
             Back to catalogue
           </Link>
-          <Link href="/cart" className="rounded-md bg-yorkRed px-4 py-2 text-sm font-medium text-white hover:opacity-90">
-            Open request cart
+          <Link href="/cart" className="rounded-md bg-yorkRed px-4 py-2 text-sm font-medium text-white transition hover:opacity-90">
+            Open request list
           </Link>
         </div>
       </article>
@@ -32,8 +32,8 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
   return (
     <article className="space-y-6">
       <section className="grid gap-6 rounded-xl border bg-white p-6 md:grid-cols-2">
-        <div className="overflow-hidden rounded-xl border bg-gray-50">
-          <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
+        <div className="flex min-h-56 items-center justify-center rounded-xl border bg-gray-50 p-6 text-center text-sm text-gray-600">
+          Official catalogue image available in the internal procurement system.
         </div>
         <div>
           <h2 className="text-2xl font-semibold text-gray-900">{product.name}</h2>
