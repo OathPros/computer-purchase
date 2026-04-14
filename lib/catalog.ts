@@ -1,31 +1,21 @@
-export type ProductStatus = "active" | "inactive" | "retired";
+import categoriesData from "@/data/categories.json";
+import productsData from "@/data/products.json";
+import vendorsData from "@/data/vendors.json";
 
-export interface Product {
+export type ProductStatus = "active" | "retired";
+export type ProductPlatform = "Windows" | "macOS" | "Cross-platform";
+
+export type Category = {
   id: string;
-  status: ProductStatus;
-  name: string;
-  brand: string;
-  category: string;
-  platform: string;
-  audience: string;
-  shortDescription: string;
-  image: string;
-  price: number;
-  currency: string;
-  specs: Record<string, string>;
-  tags: string[];
-  recommendedFor: string[];
-  notRecommendedFor: string[];
-  options: string[];
-  warranty: string;
-  availabilityNotes: string;
-  optionalUpgrades: string[];
-  platform: "Windows" | "macOS" | "Cross-platform";
-  status: "active" | "retired";
+  label: string;
 };
 
-// Input shape used for JSON editing. Non-critical fields are optional and normalized below.
-type ProductInput = {
+export type Vendor = {
+  id: string;
+  label: string;
+};
+
+export interface Product {
   id: string;
   name: string;
   categoryId: string;
@@ -33,57 +23,108 @@ type ProductInput = {
   price: number;
   image: string;
   summary: string;
+  fullDescription: string;
   specs: Record<string, string>;
-  platform: "Windows" | "macOS" | "Cross-platform";
-  status?: "active" | "retired";
-  fullDescription?: string;
-  recommendedUseCases?: string[];
-  notRecommendedFor?: string[];
-  warranty?: string;
-  availabilityNotes?: string;
-  optionalUpgrades?: string[];
+  recommendedUseCases: string[];
+  notRecommendedFor: string[];
+  warranty: string;
+  availabilityNotes: string;
+  optionalUpgrades: string[];
+  platform: ProductPlatform;
+  status: ProductStatus;
+}
+
+type ValidationResult = {
+  valid: boolean;
+  errors: string[];
 };
 
-const REQUIRED_PRODUCT_FIELDS: Array<keyof Product> = [
-  "id",
-  "status",
-  "name",
-  "brand",
-  "category",
-  "platform",
-  "audience",
-  "shortDescription",
-  "image",
-  "price",
-  "currency",
-  "specs",
-  "tags",
-  "recommendedFor",
-  "notRecommendedFor",
-  "options",
-  "warranty",
-  "availabilityNotes"
-];
+type LegacyProductInput = {
+  id: string;
+  name: string;
+  category?: string;
+  categoryId?: string;
+  brand?: string;
+  vendorId?: string;
+  price: number;
+  image: string;
+  shortDescription?: string;
+  summary?: string;
+  specs: Record<string, string>;
+  recommendedFor?: string[];
+  recommendedUseCases?: string[];
+  fullDescription?: string;
+  notRecommendedFor?: string[];
+  options?: string[];
+  optionalUpgrades?: string[];
+  warranty?: string;
+  availabilityNotes?: string;
+  platform: ProductPlatform;
+  status?: ProductStatus;
+};
 
-function normalizeProduct(product: ProductInput): Product {
+type ProductCatalog = {
+  catalogVersion: string;
+  currency: string;
+  products: LegacyProductInput[];
+};
+
+const categories = categoriesData as Category[];
+const vendors = vendorsData as Vendor[];
+const categoryLabelToId = new Map(categories.map((category) => [category.label.toLowerCase(), category.id]));
+const vendorLabelToId = new Map(vendors.map((vendor) => [vendor.label.toLowerCase(), vendor.id]));
+
+function fallbackId(value: string): string {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function normalizeProduct(product: LegacyProductInput): Product {
+  const categoryId = product.categoryId ?? categoryLabelToId.get((product.category ?? "").toLowerCase()) ?? fallbackId(product.category ?? "unknown");
+  const vendorId = product.vendorId ?? vendorLabelToId.get((product.brand ?? "").toLowerCase()) ?? fallbackId(product.brand ?? "unknown");
+
   return {
-    ...product,
-    status: product.status ?? "active",
-    fullDescription: product.fullDescription ?? product.summary,
-    recommendedUseCases: product.recommendedUseCases ?? [],
+    id: product.id,
+    name: product.name,
+    categoryId,
+    vendorId,
+    price: product.price,
+    image: product.image,
+    summary: product.summary ?? product.shortDescription ?? "No summary provided.",
+    fullDescription: product.fullDescription ?? product.summary ?? product.shortDescription ?? "No summary provided.",
+    specs: product.specs,
+    recommendedUseCases: product.recommendedUseCases ?? product.recommendedFor ?? [],
     notRecommendedFor: product.notRecommendedFor ?? [],
     warranty: product.warranty ?? "Contact procurement for warranty details.",
     availabilityNotes: product.availabilityNotes ?? "Availability varies by supplier and term.",
-    optionalUpgrades: product.optionalUpgrades ?? []
+    optionalUpgrades: product.optionalUpgrades ?? product.options ?? [],
+    platform: product.platform,
+    status: product.status ?? "active"
   };
 }
 
-export const products = (productsData as unknown as ProductInput[])
-  .map(normalizeProduct)
-  .filter((product) => product.status !== "retired");
+const rawCatalog = productsData as ProductCatalog;
+export const products = rawCatalog.products.map(normalizeProduct).filter((product) => product.status !== "retired");
+export { categories, vendors };
 
-export const categories = categoriesData as Category[];
-export const vendors = vendorsData as Vendor[];
+export function getProductById(id: string): Product | undefined {
+  return products.find((product) => product.id === id);
+}
+
+export function getVendorLabel(vendorId: string): string {
+  return vendors.find((vendor) => vendor.id === vendorId)?.label ?? vendorId;
+}
+
+export function getCategoryLabel(categoryId: string): string {
+  return categories.find((category) => category.id === categoryId)?.label ?? categoryId;
+}
+
+function isObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
 
 function isStringArray(value: unknown): value is string[] {
   return Array.isArray(value) && value.every((item) => typeof item === "string");
@@ -101,7 +142,8 @@ export function validateProduct(product: unknown, index?: number): ValidationRes
     return { valid: false, errors: [`${label} must be an object.`] };
   }
 
-  for (const field of REQUIRED_PRODUCT_FIELDS) {
+  const requiredFields = ["id", "name", "price", "image", "specs", "platform"] as const;
+  for (const field of requiredFields) {
     if (!(field in product)) {
       errors.push(`${label}.${field} is required.`);
     }
@@ -111,43 +153,44 @@ export function validateProduct(product: unknown, index?: number): ValidationRes
     errors.push(`${label}.id must be a non-empty string.`);
   }
 
-  if (!["active", "inactive", "retired"].includes(String(product.status))) {
-    errors.push(`${label}.status must be one of: active, inactive, retired.`);
-  }
-
-  const requiredStringFields: Array<keyof Product> = [
-    "name",
-    "brand",
-    "category",
-    "platform",
-    "audience",
-    "shortDescription",
-    "image",
-    "currency",
-    "warranty",
-    "availabilityNotes"
-  ];
-
-  for (const field of requiredStringFields) {
-    const value = product[field];
-    if (typeof value !== "string" || value.trim() === "") {
-      errors.push(`${label}.${field} must be a non-empty string.`);
-    }
+  if (typeof product.name !== "string" || product.name.trim() === "") {
+    errors.push(`${label}.name must be a non-empty string.`);
   }
 
   if (typeof product.price !== "number" || Number.isNaN(product.price) || product.price < 0) {
     errors.push(`${label}.price must be a non-negative number.`);
   }
 
+  if (typeof product.image !== "string" || product.image.trim() === "") {
+    errors.push(`${label}.image must be a non-empty string.`);
+  }
+
   if (!isStringMap(product.specs)) {
     errors.push(`${label}.specs must be an object of key/value strings.`);
   }
 
-  const stringArrayFields: Array<keyof Product> = ["tags", "recommendedFor", "notRecommendedFor", "options"];
-  for (const field of stringArrayFields) {
-    if (!isStringArray(product[field])) {
-      errors.push(`${label}.${field} must be a list of strings.`);
-    }
+  if (!["Windows", "macOS", "Cross-platform"].includes(String(product.platform))) {
+    errors.push(`${label}.platform must be one of: Windows, macOS, Cross-platform.`);
+  }
+
+  if (product.status !== undefined && !["active", "retired"].includes(String(product.status))) {
+    errors.push(`${label}.status must be one of: active, retired.`);
+  }
+
+  if (product.categoryId !== undefined && typeof product.categoryId !== "string") {
+    errors.push(`${label}.categoryId must be a string when provided.`);
+  }
+
+  if (product.vendorId !== undefined && typeof product.vendorId !== "string") {
+    errors.push(`${label}.vendorId must be a string when provided.`);
+  }
+
+  if (product.optionalUpgrades !== undefined && !isStringArray(product.optionalUpgrades)) {
+    errors.push(`${label}.optionalUpgrades must be a list of strings.`);
+  }
+
+  if (product.options !== undefined && !isStringArray(product.options)) {
+    errors.push(`${label}.options must be a list of strings.`);
   }
 
   return { valid: errors.length === 0, errors };
