@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import AddToRequestButton from "@/components/AddToRequestButton";
+import ProductComparison from "@/components/ProductComparison";
 import Link from "next/link";
 import type { Category, Product, Vendor } from "@/lib/catalog";
 
@@ -34,6 +35,7 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
   const [selectedBrand, setSelectedBrand] = useState<string>("all");
   const [selectedPlatform, setSelectedPlatform] = useState<string>("all");
   const [selectedPriceRange, setSelectedPriceRange] = useState<PriceRange>("all");
+  const [selectedComparisonIds, setSelectedComparisonIds] = useState<string[]>([]);
 
   const visibleProducts = useMemo(() => {
     return products.filter((product) => {
@@ -44,6 +46,33 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
       return true;
     });
   }, [products, activeCategory, selectedBrand, selectedPlatform, selectedPriceRange]);
+
+
+  const comparedProducts = useMemo(() => {
+    return selectedComparisonIds
+      .map((id) => products.find((product) => product.id === id))
+      .filter((product): product is Product => Boolean(product));
+  }, [products, selectedComparisonIds]);
+
+  const isCompareLimitReached = selectedComparisonIds.length >= 3;
+
+  function handleComparisonToggle(productId: string) {
+    setSelectedComparisonIds((current) => {
+      if (current.includes(productId)) {
+        return current.filter((id) => id !== productId);
+      }
+
+      if (current.length >= 3) {
+        return current;
+      }
+
+      return [...current, productId];
+    });
+  }
+
+  function handleRemoveFromComparison(productId: string) {
+    setSelectedComparisonIds((current) => current.filter((id) => id !== productId));
+  }
 
   const categoryMap = new Map(categories.map((category) => [category.id, category.label]));
   const vendorMap = new Map(vendors.map((vendor) => [vendor.id, vendor.label]));
@@ -125,10 +154,21 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
         </div>
       </section>
 
+      <ProductComparison
+        products={comparedProducts}
+        vendorMap={vendorMap}
+        categoryMap={categoryMap}
+        onRemoveProduct={handleRemoveFromComparison}
+        onClearAll={() => setSelectedComparisonIds([])}
+      />
+
       <section>
-        <div className="mb-4 flex items-center justify-between">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
           <h3 className="text-xl font-semibold">Browse approved products</h3>
-          <p className="text-sm text-gray-600">{visibleProducts.length} item{visibleProducts.length === 1 ? "" : "s"}</p>
+          <div className="text-right">
+            <p className="text-sm text-gray-600">{visibleProducts.length} item{visibleProducts.length === 1 ? "" : "s"}</p>
+            <p className="text-xs text-gray-500">Compare selected: {selectedComparisonIds.length}/3</p>
+          </div>
         </div>
 
         {!visibleProducts.length ? (
@@ -160,17 +200,35 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
                     ))}
                   </ul>
 
-                  <div className="mt-4 flex gap-2">
+                  <div className="mt-4 flex flex-wrap gap-2">
                     <Link href={`/products/${product.id}`} className="rounded-md border border-gray-300 px-3 py-2 text-sm font-medium text-gray-800 hover:border-yorkRed hover:text-yorkRed">
                       View details
                     </Link>
                     <AddToRequestButton productId={product.id} />
+                    <button
+                      type="button"
+                      onClick={() => handleComparisonToggle(product.id)}
+                      disabled={isCompareLimitReached && !selectedComparisonIds.includes(product.id)}
+                      className={`rounded-md border px-3 py-2 text-sm font-medium ${
+                        selectedComparisonIds.includes(product.id)
+                          ? "border-yorkRed bg-yorkRed text-white"
+                          : "border-gray-300 text-gray-700 hover:border-yorkRed hover:text-yorkRed disabled:cursor-not-allowed disabled:opacity-50"
+                      }`}
+                    >
+                      {selectedComparisonIds.includes(product.id) ? "Selected for compare" : "Compare"}
+                    </button>
                   </div>
                 </article>
               );
             })}
           </div>
         )}
+
+        {isCompareLimitReached ? (
+          <p className="mt-3 text-sm text-amber-700">
+            You can compare up to 3 products at a time. Remove one from comparison to add another.
+          </p>
+        ) : null}
       </section>
 
       <section className="rounded-xl border border-gray-200 bg-white p-6">
