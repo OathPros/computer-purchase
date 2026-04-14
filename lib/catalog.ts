@@ -10,14 +10,20 @@ export type Product = {
   price: number;
   image: string;
   summary: string;
+  fullDescription: string;
   specs: Record<string, string>;
+  recommendedUseCases: string[];
+  notRecommendedFor: string[];
+  warranty: string;
+  availabilityNotes: string;
+  optionalUpgrades: string[];
   platform: "Windows" | "macOS" | "Cross-platform";
 };
 
 export type Category = { id: string; label: string };
 export type Vendor = { id: string; label: string };
 
-export const products = productsData as Product[];
+export const products = productsData as unknown as Product[];
 export const categories = categoriesData as Category[];
 export const vendors = vendorsData as Vendor[];
 
