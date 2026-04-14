@@ -42,7 +42,7 @@ export default function CartPageClient() {
     setSubmitState({ status: "idle" });
 
     if (!expandedItems.length) {
-      setSubmitState({ status: "error", message: "Your request cart is empty." });
+      setSubmitState({ status: "error", message: "Your request list is empty." });
       return;
     }
 
@@ -75,11 +75,11 @@ export default function CartPageClient() {
     const data = (await response.json()) as { message?: string; summary?: RequestSummary };
 
     if (!response.ok || !data.summary) {
-      setSubmitState({ status: "error", message: data.message ?? "Unable to submit your purchase request right now." });
+      setSubmitState({ status: "error", message: data.message ?? "Unable to submit your request right now. Please try again." });
       return;
     }
 
-    setSubmitState({ status: "success", message: data.message ?? "Purchase request submitted.", summary: data.summary });
+    setSubmitState({ status: "success", message: data.message ?? "Request submitted.", summary: data.summary });
     event.currentTarget.reset();
     clearCart();
   }
@@ -87,7 +87,7 @@ export default function CartPageClient() {
   return (
     <section className="space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold">Request cart</h2>
+        <h2 className="text-2xl font-semibold">Request list</h2>
         <p className="mt-2 text-sm text-gray-700">Review selected products, choose options, and submit your request for institutional review.</p>
       </div>
 
@@ -131,16 +131,16 @@ export default function CartPageClient() {
           </div>
 
           <button type="button" onClick={() => setSubmitState({ status: "idle" })} className="rounded-md bg-yorkRed px-4 py-2 text-sm font-medium text-white">
-            Create another request
+            Start another request
           </button>
         </article>
       ) : (
         <>
           {!expandedItems.length ? (
             <div className="rounded-xl border border-dashed border-gray-300 bg-white p-8 text-center">
-              <p className="text-lg font-medium text-gray-900">Your request cart is empty.</p>
-              <p className="mt-2 text-sm text-gray-600">Browse approved products and use “Add to request” to build your cart.</p>
-              <Link href="/" className="mt-4 inline-flex rounded-md bg-yorkRed px-4 py-2 text-sm font-medium text-white hover:opacity-90">
+              <p className="text-lg font-medium text-gray-900">Your request list is empty.</p>
+              <p className="mt-2 text-sm text-gray-600">Browse approved products and use “Add to request list” to build your request list.</p>
+              <Link href="/" className="mt-4 inline-flex rounded-md bg-yorkRed px-4 py-2 text-sm font-medium text-white transition hover:opacity-90">
                 Browse products
               </Link>
             </div>
@@ -153,16 +153,16 @@ export default function CartPageClient() {
                       <h3 className="text-lg font-semibold text-gray-900">{item.product.name}</h3>
                       <p className="mt-1 text-sm text-gray-600">${item.product.price.toLocaleString("en-CA")} each</p>
                     </div>
-                    <button type="button" onClick={() => removeItem(item.productId)} className="text-sm font-medium text-yorkRed hover:underline">
+                    <button type="button" onClick={() => removeItem(item.productId)} className="text-sm font-medium text-yorkRed underline-offset-2 hover:underline">
                       Remove item
                     </button>
                   </div>
 
                   <div className="mt-3 flex items-center gap-3">
                     <span className="text-sm font-medium">Quantity</span>
-                    <button type="button" onClick={() => setQuantity(item.productId, item.quantity - 1)} className="h-8 w-8 rounded-md border text-lg">-</button>
+                    <button type="button" aria-label={`Decrease quantity for ${item.product.name}`} onClick={() => setQuantity(item.productId, item.quantity - 1)} className="h-8 w-8 rounded-md border border-gray-400 text-lg">-</button>
                     <span className="min-w-8 text-center text-sm font-semibold">{item.quantity}</span>
-                    <button type="button" onClick={() => setQuantity(item.productId, item.quantity + 1)} className="h-8 w-8 rounded-md border text-lg">+</button>
+                    <button type="button" aria-label={`Increase quantity for ${item.product.name}`} onClick={() => setQuantity(item.productId, item.quantity + 1)} className="h-8 w-8 rounded-md border border-gray-400 text-lg">+</button>
                   </div>
 
                   <div className="mt-4">
@@ -248,10 +248,10 @@ export default function CartPageClient() {
               <textarea className="w-full rounded-md border px-3 py-2" name="notes" rows={3} />
             </label>
             <div className="md:col-span-2 flex items-center gap-4">
-              <button type="submit" className="rounded-md bg-yorkRed px-4 py-2 text-sm font-medium text-white">
-                Submit purchase request
+              <button type="submit" className="rounded-md bg-yorkRed px-4 py-2 text-sm font-medium text-white transition hover:opacity-90">
+                Submit equipment request
               </button>
-              {submitState.status === "error" && <p className="text-sm text-red-700">{submitState.message}</p>}
+              {submitState.status === "error" && <p role="alert" className="text-sm font-medium text-red-800">{submitState.message}</p>}
             </div>
           </form>
         </>

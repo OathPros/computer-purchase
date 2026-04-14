@@ -43,7 +43,7 @@ export async function POST(request: Request) {
     .filter((item): item is NonNullable<typeof item> => item !== null);
 
   if (!items.length) {
-    return NextResponse.json({ message: "At least one cart item is required." }, { status: 400 });
+    return NextResponse.json({ message: "At least one requested item is required." }, { status: 400 });
   }
 
   const payload = createRequestEmailPayload({
