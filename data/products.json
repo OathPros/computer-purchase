@@ -12,7 +12,8 @@
       "Memory": "16 GB",
       "Storage": "512 GB SSD",
       "Display": "13.6-inch Liquid Retina"
-    }
+    },
+    "platform": "macOS"
   },
   {
     "id": "dell-latitude-7450",
@@ -27,7 +28,8 @@
       "Memory": "16 GB",
       "Storage": "512 GB SSD",
       "Display": "14-inch FHD"
-    }
+    },
+    "platform": "Windows"
   },
   {
     "id": "lenovo-thinkcentre-m90t",
@@ -42,7 +44,8 @@
       "Memory": "16 GB",
       "Storage": "1 TB SSD",
       "Graphics": "Integrated"
-    }
+    },
+    "platform": "Windows"
   },
   {
     "id": "dell-ultrasharp-u2724d",
@@ -57,7 +60,8 @@
       "Panel": "IPS",
       "Refresh Rate": "120Hz",
       "Ports": "USB-C, HDMI, DisplayPort"
-    }
+    },
+    "platform": "Cross-platform"
   },
   {
     "id": "logitech-mx-keys-s",
@@ -72,6 +76,7 @@
       "Connection": "Bluetooth / USB receiver",
       "Battery": "USB-C rechargeable",
       "Compatibility": "Windows, macOS"
-    }
+    },
+    "platform": "Cross-platform"
   }
 ]
