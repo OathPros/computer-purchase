@@ -26,10 +26,26 @@
         "network": "RealTek Gigabit Ethernet",
         "operatingSystem": "Windows 11 for Education"
       },
-      "tags": ["standard", "14-inch", "ryzen", "ethernet", "education"],
-      "recommendedFor": ["General productivity", "Microsoft 365", "Hybrid work"],
-      "notRecommendedFor": ["3D rendering", "High-end gaming"],
-      "options": ["4-year ProSupport Plus", "Scheduled campus delivery"],
+      "tags": [
+        "standard",
+        "14-inch",
+        "ryzen",
+        "ethernet",
+        "education"
+      ],
+      "recommendedFor": [
+        "General productivity",
+        "Microsoft 365",
+        "Hybrid work"
+      ],
+      "notRecommendedFor": [
+        "3D rendering",
+        "High-end gaming"
+      ],
+      "options": [
+        "4-year ProSupport Plus",
+        "Scheduled campus delivery"
+      ],
       "warranty": "ProSupport Plus, 4 years, accidental damage included",
       "availabilityNotes": "Included delivery to Keele and Glendon campuses."
     },
@@ -57,10 +73,25 @@
         "network": "Intel Gigabit Ethernet",
         "operatingSystem": "Windows 11 for Education"
       },
-      "tags": ["standard", "16-inch", "intel", "vpro", "ethernet"],
-      "recommendedFor": ["Spreadsheet-heavy work", "Teaching", "Multitasking"],
-      "notRecommendedFor": ["Frequent light-travel users"],
-      "options": ["4-year ProSupport Plus", "Scheduled campus delivery"],
+      "tags": [
+        "standard",
+        "16-inch",
+        "intel",
+        "vpro",
+        "ethernet"
+      ],
+      "recommendedFor": [
+        "Spreadsheet-heavy work",
+        "Teaching",
+        "Multitasking"
+      ],
+      "notRecommendedFor": [
+        "Frequent light-travel users"
+      ],
+      "options": [
+        "4-year ProSupport Plus",
+        "Scheduled campus delivery"
+      ],
       "warranty": "ProSupport Plus, 4 years, accidental damage included",
       "availabilityNotes": "Included delivery to Keele and Glendon campuses."
     },
@@ -88,10 +119,26 @@
         "network": "Gigabit Ethernet",
         "operatingSystem": "Windows 11 for Education"
       },
-      "tags": ["standard", "14-inch", "thinkpad", "spill-resistant", "ethernet"],
-      "recommendedFor": ["General office tasks", "Faculty use", "On-campus mobility"],
-      "notRecommendedFor": ["GPU-intensive creative apps"],
-      "options": ["4-year on-site support", "Keep Your Drive", "Accidental damage protection"],
+      "tags": [
+        "standard",
+        "14-inch",
+        "thinkpad",
+        "spill-resistant",
+        "ethernet"
+      ],
+      "recommendedFor": [
+        "General office tasks",
+        "Faculty use",
+        "On-campus mobility"
+      ],
+      "notRecommendedFor": [
+        "GPU-intensive creative apps"
+      ],
+      "options": [
+        "4-year on-site support",
+        "Keep Your Drive",
+        "Accidental damage protection"
+      ],
       "warranty": "4 years on-site with Keep Your Drive and accidental damage protection",
       "availabilityNotes": "Campus scheduled shipping included; accessories listed on CRP summary."
     },
@@ -119,10 +166,26 @@
         "network": "Gigabit Ethernet",
         "operatingSystem": "Windows 11 for Education"
       },
-      "tags": ["standard", "16-inch", "thinkpad", "vpro", "ethernet"],
-      "recommendedFor": ["Departmental deployments", "Data entry", "Multitasking"],
-      "notRecommendedFor": ["Users prioritizing ultra-light weight"],
-      "options": ["4-year on-site support", "Keep Your Drive", "Accidental damage protection"],
+      "tags": [
+        "standard",
+        "16-inch",
+        "thinkpad",
+        "vpro",
+        "ethernet"
+      ],
+      "recommendedFor": [
+        "Departmental deployments",
+        "Data entry",
+        "Multitasking"
+      ],
+      "notRecommendedFor": [
+        "Users prioritizing ultra-light weight"
+      ],
+      "options": [
+        "4-year on-site support",
+        "Keep Your Drive",
+        "Accidental damage protection"
+      ],
       "warranty": "4 years on-site with Keep Your Drive and accidental damage protection",
       "availabilityNotes": "Included scheduled ship date service for Keele and Glendon."
     },
@@ -150,10 +213,26 @@
         "network": "Wi-Fi (no integrated Ethernet)",
         "operatingSystem": "Windows 11 for Education"
       },
-      "tags": ["premium", "13-inch", "copilot-key", "vpro", "ultraportable"],
-      "recommendedFor": ["Frequent travel", "Executive users", "Lecture-to-meeting mobility"],
-      "notRecommendedFor": ["Users needing built-in RJ45"],
-      "options": ["Optional eSIM", "Optional smart card reader", "4-year ProSupport Plus"],
+      "tags": [
+        "premium",
+        "13-inch",
+        "copilot-key",
+        "vpro",
+        "ultraportable"
+      ],
+      "recommendedFor": [
+        "Frequent travel",
+        "Executive users",
+        "Lecture-to-meeting mobility"
+      ],
+      "notRecommendedFor": [
+        "Users needing built-in RJ45"
+      ],
+      "options": [
+        "Optional eSIM",
+        "Optional smart card reader",
+        "4-year ProSupport Plus"
+      ],
       "warranty": "ProSupport Plus, 4 years, accidental damage included",
       "availabilityNotes": "Campus delivery and scheduled shipping included."
     },
@@ -181,10 +260,26 @@
         "network": "Intel Gigabit Ethernet",
         "operatingSystem": "Windows 11 for Education"
       },
-      "tags": ["premium", "14-inch", "qhd", "90hz", "vpro"],
-      "recommendedFor": ["Content review", "High-resolution multitasking", "Campus and remote work"],
-      "notRecommendedFor": ["Users with basic email-only needs"],
-      "options": ["Optional eSIM", "Optional smart card reader", "4-year ProSupport Plus"],
+      "tags": [
+        "premium",
+        "14-inch",
+        "qhd",
+        "90hz",
+        "vpro"
+      ],
+      "recommendedFor": [
+        "Content review",
+        "High-resolution multitasking",
+        "Campus and remote work"
+      ],
+      "notRecommendedFor": [
+        "Users with basic email-only needs"
+      ],
+      "options": [
+        "Optional eSIM",
+        "Optional smart card reader",
+        "4-year ProSupport Plus"
+      ],
       "warranty": "ProSupport Plus, 4 years, accidental damage included",
       "availabilityNotes": "Included to Keele and Glendon campuses with scheduled shipping."
     },
@@ -212,10 +307,26 @@
         "network": "Intel Gigabit Ethernet",
         "operatingSystem": "Windows 11 for Education"
       },
-      "tags": ["premium", "16-inch", "120hz", "numeric-keypad", "vpro"],
-      "recommendedFor": ["Finance/analytics", "Heavy multitasking", "Users needing numpad"],
-      "notRecommendedFor": ["Lightweight travel-first users"],
-      "options": ["Optional eSIM", "Optional smart card reader", "4-year ProSupport Plus"],
+      "tags": [
+        "premium",
+        "16-inch",
+        "120hz",
+        "numeric-keypad",
+        "vpro"
+      ],
+      "recommendedFor": [
+        "Finance/analytics",
+        "Heavy multitasking",
+        "Users needing numpad"
+      ],
+      "notRecommendedFor": [
+        "Lightweight travel-first users"
+      ],
+      "options": [
+        "Optional eSIM",
+        "Optional smart card reader",
+        "4-year ProSupport Plus"
+      ],
       "warranty": "ProSupport Plus, 4 years, accidental damage included",
       "availabilityNotes": "Scheduled campus delivery included."
     },
@@ -243,10 +354,25 @@
         "network": "Wi-Fi (no integrated Ethernet)",
         "operatingSystem": "Windows 10 for Education"
       },
-      "tags": ["premium", "13-inch", "thinkpad", "ultralight", "trackpoint"],
-      "recommendedFor": ["Travel-heavy schedules", "Executives", "Frequent meeting use"],
-      "notRecommendedFor": ["Users needing post-purchase RAM upgrades"],
-      "options": ["Memory up to 32 GB at purchase", "4-year on-site support"],
+      "tags": [
+        "premium",
+        "13-inch",
+        "thinkpad",
+        "ultralight",
+        "trackpoint"
+      ],
+      "recommendedFor": [
+        "Travel-heavy schedules",
+        "Executives",
+        "Frequent meeting use"
+      ],
+      "notRecommendedFor": [
+        "Users needing post-purchase RAM upgrades"
+      ],
+      "options": [
+        "Memory up to 32 GB at purchase",
+        "4-year on-site support"
+      ],
       "warranty": "4 years on-site, Keep Your Drive, accidental damage, 3-year sealed battery",
       "availabilityNotes": "Scheduled shipping to Keele and Glendon included."
     },
@@ -274,10 +400,26 @@
         "network": "Gigabit Ethernet (Realtek RTL8111EPV)",
         "operatingSystem": "Windows 11 for Education"
       },
-      "tags": ["premium", "14-inch", "thinkpad", "ryzen-ai", "ethernet"],
-      "recommendedFor": ["Faculty and IT staff", "Hybrid work", "Security-conscious roles"],
-      "notRecommendedFor": ["Users seeking OLED media focus"],
-      "options": ["4-year on-site support", "Keep Your Drive", "Accidental damage protection"],
+      "tags": [
+        "premium",
+        "14-inch",
+        "thinkpad",
+        "ryzen-ai",
+        "ethernet"
+      ],
+      "recommendedFor": [
+        "Faculty and IT staff",
+        "Hybrid work",
+        "Security-conscious roles"
+      ],
+      "notRecommendedFor": [
+        "Users seeking OLED media focus"
+      ],
+      "options": [
+        "4-year on-site support",
+        "Keep Your Drive",
+        "Accidental damage protection"
+      ],
       "warranty": "4 years on-site with Keep Your Drive and accidental damage protection",
       "availabilityNotes": "Includes scheduled delivery support on both campuses."
     },
@@ -305,10 +447,26 @@
         "network": "Wi-Fi + Ethernet",
         "operatingSystem": "Windows 10 for Education"
       },
-      "tags": ["premium", "16-inch", "thinkpad", "thunderbolt", "numpad"],
-      "recommendedFor": ["Accounting and operations", "Docked workstation use", "Power multitasking"],
-      "notRecommendedFor": ["Users requiring latest Windows 11 default image"],
-      "options": ["4-year on-site support", "Keep Your Drive", "Accidental damage protection"],
+      "tags": [
+        "premium",
+        "16-inch",
+        "thinkpad",
+        "thunderbolt",
+        "numpad"
+      ],
+      "recommendedFor": [
+        "Accounting and operations",
+        "Docked workstation use",
+        "Power multitasking"
+      ],
+      "notRecommendedFor": [
+        "Users requiring latest Windows 11 default image"
+      ],
+      "options": [
+        "4-year on-site support",
+        "Keep Your Drive",
+        "Accidental damage protection"
+      ],
       "warranty": "4 years on-site with Keep Your Drive and accidental damage protection",
       "availabilityNotes": "Included campus delivery and scheduled ship date service."
     },
@@ -336,10 +494,24 @@
         "network": "Intel Gigabit Ethernet",
         "operatingSystem": "Windows 11 for Education"
       },
-      "tags": ["desktop", "standard", "small-form-factor", "vpro"],
-      "recommendedFor": ["Computer labs", "Front-desk stations", "Admin offices"],
-      "notRecommendedFor": ["High-end GPU workloads"],
-      "options": ["Dell wired keyboard and mouse included", "4-year onsite service"],
+      "tags": [
+        "desktop",
+        "standard",
+        "small-form-factor",
+        "vpro"
+      ],
+      "recommendedFor": [
+        "Computer labs",
+        "Front-desk stations",
+        "Admin offices"
+      ],
+      "notRecommendedFor": [
+        "High-end GPU workloads"
+      ],
+      "options": [
+        "Dell wired keyboard and mouse included",
+        "4-year onsite service"
+      ],
       "warranty": "Basic Onsite Service, 4 years",
       "availabilityNotes": "Delivery support to Keele and Glendon included."
     },
@@ -367,10 +539,25 @@
         "network": "Integrated Ethernet",
         "operatingSystem": "Windows 11 for Education"
       },
-      "tags": ["desktop", "standard", "sff", "32gb-ram", "vpro"],
-      "recommendedFor": ["Heavy office multitasking", "Department shared stations", "Lab admin systems"],
-      "notRecommendedFor": ["Portable use"],
-      "options": ["Lenovo USB keyboard and mouse included", "4-year on-site NBD support"],
+      "tags": [
+        "desktop",
+        "standard",
+        "sff",
+        "32gb-ram",
+        "vpro"
+      ],
+      "recommendedFor": [
+        "Heavy office multitasking",
+        "Department shared stations",
+        "Lab admin systems"
+      ],
+      "notRecommendedFor": [
+        "Portable use"
+      ],
+      "options": [
+        "Lenovo USB keyboard and mouse included",
+        "4-year on-site NBD support"
+      ],
       "warranty": "4-year on-site NBD",
       "availabilityNotes": "Accessories listed on CRP summary; scheduled campus shipping included."
     },
@@ -398,10 +585,25 @@
         "network": "Wi‑Fi (no integrated Ethernet)",
         "operatingSystem": "macOS"
       },
-      "tags": ["mac", "laptop", "13-inch", "m4", "ultralight"],
-      "recommendedFor": ["General productivity", "Students using Apple workflows", "Travel"],
-      "notRecommendedFor": ["Users requiring native Windows-only apps"],
-      "options": ["Memory configurable to 32 GB at purchase", "4-year AppleCare+ for Schools"],
+      "tags": [
+        "mac",
+        "laptop",
+        "13-inch",
+        "m4",
+        "ultralight"
+      ],
+      "recommendedFor": [
+        "General productivity",
+        "Students using Apple workflows",
+        "Travel"
+      ],
+      "notRecommendedFor": [
+        "Users requiring native Windows-only apps"
+      ],
+      "options": [
+        "Memory configurable to 32 GB at purchase",
+        "4-year AppleCare+ for Schools"
+      ],
       "warranty": "4-Year AppleCare+ for Schools (13-inch MacBook Air)",
       "availabilityNotes": "Scheduled campus delivery included."
     },
@@ -429,10 +631,25 @@
         "network": "Wi‑Fi (no integrated Ethernet)",
         "operatingSystem": "macOS"
       },
-      "tags": ["mac", "laptop", "15-inch", "m4", "retina"],
-      "recommendedFor": ["Large-screen portability", "Media and presentation work", "Apple-centric teams"],
-      "notRecommendedFor": ["Users needing built-in RJ45 or USB-A"],
-      "options": ["Memory configurable to 32 GB at purchase", "4-year AppleCare+ for Schools"],
+      "tags": [
+        "mac",
+        "laptop",
+        "15-inch",
+        "m4",
+        "retina"
+      ],
+      "recommendedFor": [
+        "Large-screen portability",
+        "Media and presentation work",
+        "Apple-centric teams"
+      ],
+      "notRecommendedFor": [
+        "Users needing built-in RJ45 or USB-A"
+      ],
+      "options": [
+        "Memory configurable to 32 GB at purchase",
+        "4-year AppleCare+ for Schools"
+      ],
       "warranty": "4-Year AppleCare+ for Schools (15-inch MacBook Air)",
       "availabilityNotes": "Included scheduled delivery to Keele and Glendon campuses."
     },
@@ -460,12 +677,219 @@
         "network": "Gigabit Ethernet",
         "operatingSystem": "macOS"
       },
-      "tags": ["mac", "desktop", "m4", "compact", "ethernet"],
-      "recommendedFor": ["Reception and service desks", "Shared Apple lab stations", "Conference room use"],
-      "notRecommendedFor": ["Users needing an included monitor/keyboard/mouse"],
-      "options": ["Memory configurable to 32 GB at purchase", "4-year AppleCare+ for Schools"],
+      "tags": [
+        "mac",
+        "desktop",
+        "m4",
+        "compact",
+        "ethernet"
+      ],
+      "recommendedFor": [
+        "Reception and service desks",
+        "Shared Apple lab stations",
+        "Conference room use"
+      ],
+      "notRecommendedFor": [
+        "Users needing an included monitor/keyboard/mouse"
+      ],
+      "options": [
+        "Memory configurable to 32 GB at purchase",
+        "4-year AppleCare+ for Schools"
+      ],
       "warranty": "4-Year AppleCare+ for Schools - Mac mini",
       "availabilityNotes": "Campus delivery with scheduled ship date support included."
+    },
+    {
+      "id": "dell-p2425h-monitor",
+      "status": "active",
+      "name": "Dell P2425H 24-inch Monitor",
+      "brand": "Dell",
+      "category": "Monitor",
+      "platform": "Cross-platform",
+      "audience": "General workstation users",
+      "shortDescription": "24-inch Full HD IPS monitor for everyday office and academic workflows.",
+      "image": "https://example.com/images/dell-p2425h.jpg",
+      "price": 279,
+      "currency": "CAD",
+      "specs": {
+        "panel": "23.8-inch IPS, 1920x1080",
+        "refreshRate": "100 Hz",
+        "brightness": "250 nits",
+        "ports": "HDMI, DisplayPort, VGA, 4x USB-A hub",
+        "ergonomics": "Height, tilt, swivel, pivot",
+        "warranty": "3-year advanced exchange"
+      },
+      "tags": [
+        "monitor",
+        "24-inch",
+        "ips"
+      ],
+      "recommendedFor": [
+        "Dual-monitor office setups",
+        "Administrative work"
+      ],
+      "notRecommendedFor": [
+        "Color-critical design"
+      ],
+      "options": [
+        "DisplayPort cable bundle",
+        "Campus desk setup service"
+      ],
+      "warranty": "3-year limited hardware warranty",
+      "availabilityNotes": "Typically stocked for campus delivery in 1-2 weeks."
+    },
+    {
+      "id": "dell-u2724d-monitor",
+      "status": "active",
+      "name": "Dell UltraSharp U2724D 27-inch Monitor",
+      "brand": "Dell",
+      "category": "Monitor",
+      "platform": "Cross-platform",
+      "audience": "Power users and analysts",
+      "shortDescription": "27-inch QHD IPS monitor with high color accuracy and ergonomic stand.",
+      "image": "https://example.com/images/dell-u2724d.jpg",
+      "price": 529,
+      "currency": "CAD",
+      "specs": {
+        "panel": "27-inch IPS Black, 2560x1440",
+        "refreshRate": "120 Hz",
+        "brightness": "350 nits",
+        "ports": "DisplayPort, HDMI, USB-C upstream, USB hub",
+        "color": "98% DCI-P3 (typical)",
+        "ergonomics": "Height, tilt, swivel, pivot"
+      },
+      "tags": [
+        "monitor",
+        "27-inch",
+        "qhd"
+      ],
+      "recommendedFor": [
+        "Spreadsheet-heavy work",
+        "Multi-window workflows"
+      ],
+      "notRecommendedFor": [
+        "Small desk footprints"
+      ],
+      "options": [
+        "USB-C docking cable kit",
+        "Color calibration profile setup"
+      ],
+      "warranty": "3-year premium panel exchange",
+      "availabilityNotes": "Available through standard York monitor procurement channels."
+    },
+    {
+      "id": "logitech-mx-keys-combo",
+      "status": "active",
+      "name": "Logitech MX Keys + MX Master 3S Combo",
+      "brand": "Logitech",
+      "category": "Peripheral",
+      "platform": "Cross-platform",
+      "audience": "Faculty and staff",
+      "shortDescription": "Wireless keyboard and mouse combo with multi-device support.",
+      "image": "https://example.com/images/logitech-mx-combo.jpg",
+      "price": 269,
+      "currency": "CAD",
+      "specs": {
+        "keyboard": "Full-size backlit MX Keys S",
+        "mouse": "MX Master 3S ergonomic mouse",
+        "connectivity": "Bluetooth or Logi Bolt receiver",
+        "battery": "Rechargeable USB-C",
+        "compatibility": "Windows and macOS"
+      },
+      "tags": [
+        "peripheral",
+        "keyboard",
+        "mouse"
+      ],
+      "recommendedFor": [
+        "Shared office workstations",
+        "Hybrid work users"
+      ],
+      "notRecommendedFor": [
+        "Users requiring wired-only peripherals"
+      ],
+      "options": [
+        "French bilingual keycap set",
+        "Spare Logi Bolt receiver"
+      ],
+      "warranty": "1-year limited hardware warranty",
+      "availabilityNotes": "Commonly available; bulk orders may require lead time."
+    },
+    {
+      "id": "logitech-zone-wireless-headset",
+      "status": "active",
+      "name": "Logitech Zone Wireless Headset",
+      "brand": "Logitech",
+      "category": "Peripheral",
+      "platform": "Cross-platform",
+      "audience": "Staff in virtual meetings",
+      "shortDescription": "Noise-cancelling wireless headset certified for major collaboration tools.",
+      "image": "https://example.com/images/logitech-zone-wireless.jpg",
+      "price": 239,
+      "currency": "CAD",
+      "specs": {
+        "audio": "On-ear stereo with active noise cancellation",
+        "microphone": "Flip-to-mute dual MEMS mic",
+        "connectivity": "Bluetooth + USB receiver",
+        "battery": "Up to 14 hours talk time",
+        "compatibility": "Windows and macOS"
+      },
+      "tags": [
+        "peripheral",
+        "headset",
+        "meetings"
+      ],
+      "recommendedFor": [
+        "Frequent Teams/Zoom calls",
+        "Open office environments"
+      ],
+      "notRecommendedFor": [
+        "Users preferring over-ear fit"
+      ],
+      "options": [
+        "Charging stand",
+        "Replacement ear pad kit"
+      ],
+      "warranty": "2-year limited hardware warranty",
+      "availabilityNotes": "Available via standard accessory catalogue lots."
+    },
+    {
+      "id": "belkin-usb-c-dock-100w",
+      "status": "active",
+      "name": "Belkin USB-C Dock (100W)",
+      "brand": "Belkin",
+      "category": "Accessory",
+      "platform": "Cross-platform",
+      "audience": "Desk-based laptop users",
+      "shortDescription": "USB-C docking station for dual display and wired networking at fixed desks.",
+      "image": "https://example.com/images/belkin-usbc-dock.jpg",
+      "price": 319,
+      "currency": "CAD",
+      "specs": {
+        "power": "Up to 100W pass-through charging",
+        "video": "Dual external display support",
+        "network": "Gigabit Ethernet",
+        "ports": "USB-C, 3x USB-A, HDMI, DisplayPort, audio",
+        "compatibility": "USB-C laptops on Windows and macOS"
+      },
+      "tags": [
+        "accessory",
+        "dock",
+        "usb-c"
+      ],
+      "recommendedFor": [
+        "Hot-desk setups",
+        "Single-cable laptop connections"
+      ],
+      "notRecommendedFor": [
+        "Users already assigned conferencing monitor docks"
+      ],
+      "options": [
+        "90W power adapter",
+        "Cable management kit"
+      ],
+      "warranty": "2-year limited warranty",
+      "availabilityNotes": "May require 2-3 week lead time depending on inventory."
     }
   ]
 }
