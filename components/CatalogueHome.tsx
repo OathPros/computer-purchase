@@ -14,6 +14,7 @@ type CatalogueHomeProps = {
 };
 
 type PriceRange = "all" | "under-500" | "500-1000" | "1000-1500" | "1500-plus";
+type SortOption = "recommended" | "price-asc" | "price-desc" | "name-asc" | "name-desc";
 
 const priceRanges: Array<{ id: PriceRange; label: string }> = [
   { id: "all", label: "All prices" },
@@ -36,17 +37,41 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
   const [selectedBrand, setSelectedBrand] = useState<string>("all");
   const [selectedPlatform, setSelectedPlatform] = useState<string>("all");
   const [selectedPriceRange, setSelectedPriceRange] = useState<PriceRange>("all");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [sortOption, setSortOption] = useState<SortOption>("recommended");
   const [selectedComparisonIds, setSelectedComparisonIds] = useState<string[]>([]);
 
-  const visibleProducts = useMemo(() => {
+  const filteredProducts = useMemo(() => {
+    const normalizedQuery = searchQuery.trim().toLowerCase();
+
     return products.filter((product) => {
       if (activeCategory !== "all" && product.categoryId !== activeCategory) return false;
       if (selectedBrand !== "all" && product.vendorId !== selectedBrand) return false;
       if (selectedPlatform !== "all" && product.platform !== selectedPlatform) return false;
       if (!matchesPriceRange(product.price, selectedPriceRange)) return false;
+      if (normalizedQuery) {
+        const searchableText = `${product.name} ${product.summary} ${product.fullDescription}`.toLowerCase();
+        if (!searchableText.includes(normalizedQuery)) return false;
+      }
       return true;
     });
-  }, [products, activeCategory, selectedBrand, selectedPlatform, selectedPriceRange]);
+  }, [products, activeCategory, selectedBrand, selectedPlatform, selectedPriceRange, searchQuery]);
+
+  const visibleProducts = useMemo(() => {
+    const sorted = [...filteredProducts];
+
+    if (sortOption === "price-asc") {
+      sorted.sort((a, b) => a.price - b.price);
+    } else if (sortOption === "price-desc") {
+      sorted.sort((a, b) => b.price - a.price);
+    } else if (sortOption === "name-asc") {
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortOption === "name-desc") {
+      sorted.sort((a, b) => b.name.localeCompare(a.name));
+    }
+
+    return sorted;
+  }, [filteredProducts, sortOption]);
 
   const comparedProducts = useMemo(() => {
     return selectedComparisonIds
@@ -79,10 +104,18 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
     setSelectedBrand("all");
     setSelectedPlatform("all");
     setSelectedPriceRange("all");
+    setSearchQuery("");
+    setSortOption("recommended");
   }
 
   const categoryMap = new Map(categories.map((category) => [category.id, category.label]));
   const vendorMap = new Map(vendors.map((vendor) => [vendor.id, vendor.label]));
+  const visibleVendorIds = useMemo(() => {
+    return new Set(products.map((product) => product.vendorId));
+  }, [products]);
+  const availableVendors = useMemo(() => {
+    return vendors.filter((vendor) => visibleVendorIds.has(vendor.id));
+  }, [vendors, visibleVendorIds]);
 
   return (
     <div className="space-y-8">
@@ -138,12 +171,21 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
               Clear filters
             </button>
           </div>
-          <div className="mt-3 grid gap-3 md:grid-cols-3">
+          <div className="mt-3 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+            <label className="text-sm md:col-span-2 xl:col-span-2">
+              <span className="mb-1 block font-medium">Search</span>
+              <input
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+                placeholder="Search name or description"
+                className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900"
+              />
+            </label>
             <label className="text-sm">
               <span className="mb-1 block font-medium">Brand</span>
               <select value={selectedBrand} onChange={(event) => setSelectedBrand(event.target.value)} className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900">
                 <option value="all">All brands</option>
-                {vendors.map((vendor) => (
+                {availableVendors.map((vendor) => (
                   <option key={vendor.id} value={vendor.id}>{vendor.label}</option>
                 ))}
               </select>
@@ -163,6 +205,16 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
                 {priceRanges.map((range) => (
                   <option key={range.id} value={range.id}>{range.label}</option>
                 ))}
+              </select>
+            </label>
+            <label className="text-sm">
+              <span className="mb-1 block font-medium">Sort</span>
+              <select value={sortOption} onChange={(event) => setSortOption(event.target.value as SortOption)} className="w-full rounded-md border border-gray-300 px-3 py-2 text-gray-900">
+                <option value="recommended">Recommended</option>
+                <option value="price-asc">Price: Low to high</option>
+                <option value="price-desc">Price: High to low</option>
+                <option value="name-asc">Name: A to Z</option>
+                <option value="name-desc">Name: Z to A</option>
               </select>
             </label>
           </div>

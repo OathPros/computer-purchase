@@ -249,7 +249,7 @@ export default function CartPageClient() {
             </label>
             <div className="md:col-span-2 flex items-center gap-4">
               <button type="submit" className="rounded-md bg-yorkRed px-4 py-2 text-sm font-medium text-white transition hover:opacity-90">
-                Submit equipment request
+                Submit purchase request
               </button>
               {submitState.status === "error" && <p role="alert" className="text-sm font-medium text-red-800">{submitState.message}</p>}
             </div>
