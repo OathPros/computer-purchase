@@ -1,5 +1,6 @@
 import Link from "next/link";
 import AddToRequestButton from "@/components/AddToRequestButton";
+import ProductImage from "@/components/ProductImage";
 import { getCategoryLabel, getProductById, getVendorLabel } from "@/lib/catalog";
 
 type ProductPageProps = {
@@ -32,8 +33,8 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
   return (
     <article className="space-y-6">
       <section className="grid gap-6 rounded-xl border bg-white p-6 md:grid-cols-2">
-        <div className="flex min-h-56 items-center justify-center rounded-xl border bg-gray-50 p-6 text-center text-sm text-gray-600">
-          Official catalogue image available in the internal procurement system.
+        <div className="overflow-hidden rounded-xl border bg-gray-50">
+          <ProductImage src={product.image} alt={product.name} className="min-h-56 w-full object-cover" />
         </div>
         <div>
           <h2 className="text-2xl font-semibold text-gray-900">{product.name}</h2>
