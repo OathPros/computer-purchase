@@ -77,6 +77,10 @@ export function RequestCartProvider({ children }: { children: React.ReactNode })
   const estimatedTotal = useMemo(() => expandedItems.reduce((total, item) => total + item.quantity * item.product.price, 0), [expandedItems]);
 
   function addToRequest(productId: string) {
+    if (!getProductById(productId)) {
+      return;
+    }
+
     setItems((current) => {
       const existing = current.find((item) => item.productId === productId);
       if (existing) {
@@ -87,6 +91,10 @@ export function RequestCartProvider({ children }: { children: React.ReactNode })
   }
 
   function setQuantity(productId: string, quantity: number) {
+    if (!Number.isFinite(quantity)) {
+      return;
+    }
+
     if (quantity <= 0) {
       removeItem(productId);
       return;
