@@ -21,7 +21,7 @@ export default function AddToRequestButton({ productId, className }: AddToReques
       onClick={() => addToRequest(productId)}
       className={className ?? "rounded-md bg-yorkRed px-3 py-2 text-sm font-medium text-white transition hover:opacity-90"}
     >
-      {quantityInCart > 0 ? `Add to request list (${quantityInCart})` : "Add to request list"}
+      {quantityInCart > 0 ? `Add to request (${quantityInCart})` : "Add to request"}
     </button>
   );
 }

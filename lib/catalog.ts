@@ -122,7 +122,7 @@ function normalizeProduct(product: LegacyProductInput): Product {
   };
 }
 
-const rawCatalog = productsData as ProductCatalog;
+const rawCatalog = productsData as unknown as ProductCatalog;
 export const products = rawCatalog.products.map(normalizeProduct).filter((product) => product.status !== "retired");
 export { categories, vendors };
 

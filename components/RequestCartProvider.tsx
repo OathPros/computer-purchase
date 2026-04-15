@@ -49,7 +49,8 @@ export function RequestCartProvider({ children }: { children: React.ReactNode })
       const raw = window.localStorage.getItem(STORAGE_KEY);
       if (raw) {
         const parsed = JSON.parse(raw) as unknown;
-        setItems(sanitizeCart(parsed));
+        const hydratedItems = sanitizeCart(parsed);
+        setItems((current) => (current.length > 0 ? current : hydratedItems));
       }
     } catch {
       setItems([]);

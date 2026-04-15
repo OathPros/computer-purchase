@@ -1,5 +1,6 @@
 [
   { "id": "apple", "label": "Apple" },
+  { "id": "belkin", "label": "Belkin" },
   { "id": "dell", "label": "Dell" },
   { "id": "lenovo", "label": "Lenovo" },
   { "id": "microsoft", "label": "Microsoft" },

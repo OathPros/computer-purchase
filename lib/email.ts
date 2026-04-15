@@ -1,6 +1,6 @@
 import type { PurchaseRequest } from "@/lib/cart";
 
-const REQUEST_DESTINATION = "lukegag2@yorku.ca";
+const REQUEST_DESTINATION = "askit@yorku.ca";
 
 function escapeHtml(value: string): string {
   return value
