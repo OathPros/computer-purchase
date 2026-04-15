@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import AddToRequestButton from "@/components/AddToRequestButton";
 import ProductComparison from "@/components/ProductComparison";
 import Link from "next/link";
+import ProductImage from "@/components/ProductImage";
 import type { Category, Product, Vendor } from "@/lib/catalog";
 
 type CatalogueHomeProps = {
@@ -196,7 +197,13 @@ export default function CatalogueHome({ products, categories, vendors }: Catalog
               const keySpecs = Object.entries(product.specs).slice(0, 3);
               return (
                 <article key={product.id} className="flex h-full flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-sm">
-                  <div className="mb-3 flex aspect-video items-center justify-center rounded-lg bg-gray-100 p-3 text-center text-sm text-gray-600">Product image preview</div>
+                  <div className="mb-3 overflow-hidden rounded-lg border border-gray-200 bg-gray-100">
+                    <ProductImage
+                      src={product.image}
+                      alt={product.name}
+                      className="aspect-video w-full object-cover"
+                    />
+                  </div>
                   <div className="mb-2 flex flex-wrap gap-2 text-xs font-medium text-gray-700">
                     <span className="rounded-full bg-gray-100 px-2 py-1">{vendorMap.get(product.vendorId) ?? product.vendorId}</span>
                     <span className="rounded-full bg-gray-100 px-2 py-1">{product.platform}</span>

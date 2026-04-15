@@ -82,8 +82,24 @@ function fallbackId(value: string): string {
     .replace(/^-+|-+$/g, "");
 }
 
+function normalizeCategoryId(product: LegacyProductInput): string {
+  if (product.categoryId) return product.categoryId;
+
+  const category = (product.category ?? "").trim().toLowerCase();
+  const fromLabel = categoryLabelToId.get(category);
+  if (fromLabel) return fromLabel;
+
+  if (category.includes("laptop") || category.includes("notebook")) return "laptops";
+  if (category.includes("desktop")) return "desktops";
+  if (category.includes("monitor") || category.includes("display")) return "monitors";
+  if (category.includes("peripheral")) return "peripherals";
+  if (category.includes("accessor")) return "accessories";
+
+  return fallbackId(product.category ?? "unknown");
+}
+
 function normalizeProduct(product: LegacyProductInput): Product {
-  const categoryId = product.categoryId ?? categoryLabelToId.get((product.category ?? "").toLowerCase()) ?? fallbackId(product.category ?? "unknown");
+  const categoryId = normalizeCategoryId(product);
   const vendorId = product.vendorId ?? vendorLabelToId.get((product.brand ?? "").toLowerCase()) ?? fallbackId(product.brand ?? "unknown");
 
   return {
