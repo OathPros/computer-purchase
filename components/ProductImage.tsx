@@ -17,20 +17,10 @@ function createFallbackDataUri(label: string): string {
 export default function ProductImage({ src, alt, className }: ProductImageProps) {
   const [hasError, setHasError] = useState(false);
   const fallbackSrc = useMemo(() => createFallbackDataUri(alt), [alt]);
-  const normalizedSrc = useMemo(() => {
-    const trimmed = src.trim();
-    if (!trimmed) return fallbackSrc;
-
-    if (trimmed.includes("example.com/")) {
-      return fallbackSrc;
-    }
-
-    return trimmed;
-  }, [src, fallbackSrc]);
 
   return (
     <img
-      src={hasError ? fallbackSrc : normalizedSrc}
+      src={hasError ? fallbackSrc : src}
       alt={alt}
       loading="lazy"
       onError={() => setHasError(true)}
