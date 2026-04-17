@@ -31,7 +31,7 @@ A Next.js App Router project for York users to browse approved computer-related 
 - Search and sorting controls.
 - Request cart with quantity and upgrade selections.
 - Purchase request form and API payload generation.
-- Email payload preparation for `askit@yorku.ca` (no outbound email sending in this starter).
+- Email payload preparation for `lukegag2@gmail.ca` (no outbound email sending in this starter).
 
 ## Project structure
 
@@ -119,7 +119,7 @@ Each product needs:
 
 - Validates requester fields and requested items.
 - Matches items against catalogue products.
-- Builds structured email payload content addressed to `askit@yorku.ca`.
+- Builds structured email payload content addressed to `lukegag2@gmail.com`.
 - Returns a structured summary response for UI confirmation.
 
 This project currently **does not send** real email; it prepares the payload only.
